@@ -34,7 +34,7 @@ window.TableManager = {
     // Question cell
     const questionCell = document.createElement('td');
     questionCell.className = 'table-question';
-    questionCell.innerHTML = this.truncateText(question.question, 10);
+    questionCell.innerHTML = this.truncateText(question.question, 100);
     
     // Difficulty cell
     const difficultyCell = document.createElement('td');

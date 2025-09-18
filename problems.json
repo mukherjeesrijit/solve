@@ -26,5 +26,61 @@
       "D": "$P(A) P(B)$"
     },
     "answer": "B"
+  },
+  {
+    "id": 46,
+    "topic": "Probability",
+    "difficulty": "Hard",
+    "questionType": "single",
+    "question": "A box contains 12 balls: 5 red, 4 blue, and 3 green. If 3 balls are drawn without replacement, what is the probability that all three balls are of different colors?",
+    "options": {
+      "A": "$\\frac{60}{220}$",
+      "B": "$\\frac{1}{11}$",
+      "C": "$\\frac{3}{11}$",
+      "D": "$\\frac{60}{165}$"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 47,
+    "topic": "Probability",
+    "difficulty": "Medium",
+    "questionType": "single",
+    "question": "In a normal distribution with mean $\\mu = 100$ and standard deviation $\\sigma = 15$, what is the probability that a randomly selected value falls between 85 and 115?",
+    "options": {
+      "A": "$0.68$",
+      "B": "$0.95$",
+      "C": "$0.99$",
+      "D": "$0.50$"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 48,
+    "topic": "Statistics",
+    "difficulty": "Easy",
+    "questionType": "single",
+    "question": "The mean of the dataset $\\{2, 4, 6, 8, 10\\}$ is:",
+    "options": {
+      "A": "$5$",
+      "B": "$6$",
+      "C": "$7$",
+      "D": "$8$"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 49,
+    "topic": "Statistics",
+    "difficulty": "Hard",
+    "questionType": "single",
+    "question": "For a chi-square test with 5 degrees of freedom, what is the critical value at $\\alpha = 0.05$ significance level?",
+    "options": {
+      "A": "$9.236$",
+      "B": "$11.070$",
+      "C": "$12.833$",
+      "D": "$15.086$"
+    },
+    "answer": "B"
   }
 ]

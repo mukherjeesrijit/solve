@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Probability Quiz</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      startup: {
+        ready: () => {
+          MathJax.startup.defaultReady();
+          loadQuestions();
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: #ffffff;
+      color: #1f2937;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e5e7eb;
+      z-index: 100;
+      padding: 0 2rem;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #4f46e5;
+    }
+
+    .tab-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .tab-btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: transparent;
+      color: #6b7280;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: #4f46e5;
+      color: white;
+    }
+
+    .tab-btn:hover:not(.active) {
+      background: #f3f4f6;
+      color: #374151;
+    }
+
+    .main-container {
+      margin-top: 70px;
+      min-height: calc(100vh - 70px);
+    }
+
+    /* Quiz Tab */
+    .quiz-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      display: none;
+    }
+
+    .quiz-container.active {
+      display: block;
+    }
+
+    .question-card {
+      background: white;
+      border-radius: 16px;
+      padding: 3rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      margin-bottom: 2rem;
+      border: 1px solid #f3f4f6;
+      position: relative;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: slideInUp 0.6s ease forwards;
+    }
+
+    @keyframes slideInUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .question-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .question-number {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .question-meta {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .difficulty-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .difficulty-easy { background: #dcfce7; color: #166534; }
+    .difficulty-medium { background: #fef3c7; color: #92400e; }
+    .difficulty-hard { background: #fee2e2; color: #991b1b; }
+
+    .topic-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      background: #ede9fe;
+      color: #5b21b6;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .question-text {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .options {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .option-label {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: #fafafa;
+    }
+
+    .option-label:hover {
+      border-color: #4f46e5;
+      background: #f8faff;
+      transform: translateY(-1px);
+    }
+
+    .option-label input {
+      margin-right: 1rem;
+      width: 20px;
+      height: 20px;
+      accent-color: #4f46e5;
+    }
+
+    .option-text {
+      flex: 1;
+      font-size: 1rem;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+    }
+
+    .btn-secondary {
+      background: #f3f4f6;
+      color: #374151;
+    }
+
+    .btn-secondary:hover {
+      background: #e5e7eb;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      padding: 0 1rem;
+    }
+
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      background: #f8faff;
+      color: #4f46e5;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover:not(:disabled) {
+      background: #4f46e5;
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .progress-indicator {
+      text-align: center;
+      color: #6b7280;
+      font-weight: 500;
+    }
+
+    /* Table Tab */
+    .table-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: none;
+    }
+
+    .table-container.active {
+      display: block;
+    }
+
+    .table-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .table-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 0.5rem;
+    }
+
+    .table-subtitle {
+      color: #6b7280;
+      font-size: 1.1rem;
+    }
+
+    .problems-table {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      border: 1px solid #f3f4f6;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table th {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: white;
+      padding: 1rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .table td {
+      padding: 1rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top;
+    }
+
+    .table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .table tr:hover {
+      background: #f8faff;
+    }
+
+    .table-question {
+      max-width: 400px;
+      line-height: 1.5;
+    }
+
+    .table-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .action-btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .btn-solve {
+      background: #4f46e5;
+      color: white;
+    }
+
+    .btn-solve:hover {
+      background: #3730a3;
+      transform: translateY(-1px);
+    }
+
+    /* Loading */
+    .loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 400px;
+      color: #6b7280;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid #f3f4f6;
+      border-top: 3px solid #4f46e5;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header {
+        padding: 0 1rem;
+      }
+
+      .tab-buttons {
+        gap: 0.5rem;
+      }
+
+      .quiz-container {
+        padding: 2rem 1rem;
+      }
+
+      .question-card {
+        padding: 2rem;
+      }
+
+      .question-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .table-container {
+        padding: 1rem;
+      }
+
+      .table {
+        font-size: 0.875rem;
+      }
+
+      .table th,
+      .table td {
+        padding: 0.75rem 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">Probability Quiz</div>
+    <div class="tab-buttons">
+      <button class="tab-btn active" onclick="switchTab('quiz')">Quiz</button>
+      <button class="tab-btn" onclick="switchTab('table')">Problems Table</button>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <!-- Quiz Tab -->
+    <div id="quiz-tab" class="quiz-container active">
+      <div id="quiz-content">
+        <div class="loading">
+          <div class="spinner"></div>
+          <p>Loading questions...</p>
+        </div>
+      </div>
+      
+      <div id="navigation" class="navigation" style="display: none;">
+        <button id="prev-btn" class="nav-btn" onclick="previousQuestion()">
+          ← Previous
+        </button>
+        <div class="progress-indicator">
+          <span id="current-q">1</span> of <span id="total-q">0</span>
+        </div>
+        <button id="next-btn" class="nav-btn" onclick="nextQuestion()">
+          Next →
+        </button>
+      </div>
+    </div>
+
+    <!-- Table Tab -->
+    <div id="table-tab" class="table-container">
+      <div class="table-header">
+        <h1 class="table-title">Problems Overview</h1>
+        <p class="table-subtitle">Browse all available probability problems</p>
+      </div>
+      <div class="problems-table">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Question</th>
+              <th>Difficulty</th>
+              <th>Topic</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="problems-table-body">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let questions = [];
+    let currentQuestionIndex = 0;
+    let userAnswers = {};
+
+    const sampleQuestions = [
+      {
+        "id": 44,
+        "topic": "Probability",
+        "difficulty": "Medium",
+        "questionType": "single",
+        "question": "At a large university, the probability that a student takes Calculus and Statistics in the same semester is $0.0125$. The probability that a student takes Statistics is $0.125$. Find the probability that a student is taking Calculus, given that he or she is taking Statistics.",
+        "options": {
+          "A": "$0.0125$",
+          "B": "$0.0100$",
+          "C": "$0.1000$",
+          "D": "$0.4500$"
+        },
+        "answer": "C"
+      },
+      {
+        "id": 45,
+        "topic": "Probability",
+        "difficulty": "Easy",
+        "questionType": "single",
+        "question": "If $A$ and $B$ are two events, the probability of occurrence of either $A$ or $B$ is given as:",
+        "options": {
+          "A": "$P(A)+P(B)$",
+          "B": "$P(A \\cup B)$",
+          "C": "$P(A \\cap B)$",
+          "D": "$P(A) P(B)$"
+        },
+        "answer": "B"
+      },
+      {
+        "id": 46,
+        "topic": "Probability",
+        "difficulty": "Hard",
+        "questionType": "single",
+        "question": "A box contains 12 balls: 5 red, 4 blue, and 3 green. If 3 balls are drawn without replacement, what is the probability that all three balls are of different colors?",
+        "options": {
+          "A": "$\\frac{60}{220}$",
+          "B": "$\\frac{1}{11}$",
+          "C": "$\\frac{3}{11}$",
+          "D": "$\\frac{60}{165}$"
+        },
+        "answer": "C"
+      }
+    ];
+
+    async function loadQuestions() {
+      try {
+        try {
+          const response = await fetch('problems.json');
+          if (response.ok) {
+            questions = await response.json();
+          } else {
+            throw new Error('JSON file not found');
+          }
+        } catch (e) {
+          console.warn('Could not load problems.json, using sample data');
+          questions = sampleQuestions;
+        }
+        
+        initializeQuiz();
+        populateProblemsTable();
+      } catch (error) {
+        document.getElementById("quiz-content").innerHTML = 
+          `<div style="text-align: center; color: #ef4444; padding: 2rem;">
+            <h3>Error loading questions</h3>
+            <p>${error.message}</p>
+          </div>`;
+      }
+    }
+
+    function initializeQuiz() {
+      currentQuestionIndex = 0;
+      userAnswers = {};
+      document.getElementById('total-q').textContent = questions.length;
+      renderCurrentQuestion();
+      document.getElementById('navigation').style.display = 'flex';
+    }
+
+    function renderCurrentQuestion() {
+      const q = questions[currentQuestionIndex];
+      const quizContent = document.getElementById("quiz-content");
+      
+      const card = document.createElement("div");
+      card.className = "question-card";
+
+      const header = document.createElement("div");
+      header.className = "question-header";
+      
+      const qNumber = document.createElement("div");
+      qNumber.className = "question-number";
+      qNumber.textContent = currentQuestionIndex + 1;
+      
+      const meta = document.createElement("div");
+      meta.className = "question-meta";
+      
+      const difficultyBadge = document.createElement("span");
+      difficultyBadge.className = `difficulty-badge difficulty-${q.difficulty.toLowerCase()}`;
+      difficultyBadge.textContent = q.difficulty;
+      
+      const topicBadge = document.createElement("span");
+      topicBadge.className = "topic-badge";
+      topicBadge.textContent = q.topic;
+      
+      meta.appendChild(difficultyBadge);
+      meta.appendChild(topicBadge);
+      header.appendChild(qNumber);
+      header.appendChild(meta);
+
+      const qText = document.createElement("div");
+      qText.className = "question-text";
+      qText.innerHTML = q.question;
+
+      const optsDiv = document.createElement("div");
+      optsDiv.className = "options";
+
+      for (const [key, val] of Object.entries(q.options)) {
+        const label = document.createElement("label");
+        label.className = "option-label";
+        
+        const isSelected = userAnswers[q.id] === key;
+        label.innerHTML = `
+          <input type="radio" name="q${q.id}" value="${key}" ${isSelected ? 'checked' : ''}>
+          <span class="option-text"><strong>${key}:</strong> ${val}</span>
+        `;
+        
+        label.addEventListener('change', (e) => {
+          if (e.target.checked) {
+            userAnswers[q.id] = key;
+          }
+        });
+        
+        optsDiv.appendChild(label);
+      }
+
+      const actionButtons = document.createElement("div");
+      actionButtons.className = "action-buttons";
+
+      const checkBtn = document.createElement("button");
+      checkBtn.className = "btn btn-primary";
+      checkBtn.textContent = "Check Answer";
+      checkBtn.onclick = () => checkAnswer(q.id, q.answer);
+
+      actionButtons.appendChild(checkBtn);
+
+      card.appendChild(header);
+      card.appendChild(qText);
+      card.appendChild(optsDiv);
+      card.appendChild(actionButtons);
+
+      quizContent.innerHTML = '';
+      quizContent.appendChild(card);
+
+      // Update navigation
+      document.getElementById('current-q').textContent = currentQuestionIndex + 1;
+      document.getElementById('prev-btn').disabled = currentQuestionIndex === 0;
+      document.getElementById('next-btn').disabled = currentQuestionIndex === questions.length - 1;
+
+      // Re-render MathJax
+      if (window.MathJax && window.MathJax.typesetPromise) {
+        MathJax.typesetPromise([quizContent]).catch(console.error);
+      }
+    }
+
+    function checkAnswer(questionId, correctAnswer) {
+      const selected = userAnswers[questionId];
+      if (!selected) {
+        alert("Please select an answer");
+        return;
+      }
+      
+      if (selected === correctAnswer) {
+        alert("✅ Correct! Well done!");
+      } else {
+        alert(`❌ Incorrect. The correct answer is ${correctAnswer}`);
+      }
+    }
+
+    function nextQuestion() {
+      if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        renderCurrentQuestion();
+      }
+    }
+
+    function previousQuestion() {
+      if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        renderCurrentQuestion();
+      }
+    }
+
+    function switchTab(tab) {
+      // Update tab buttons
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // Show/hide tab content
+      document.getElementById('quiz-tab').classList.toggle('active', tab === 'quiz');
+      document.getElementById('table-tab').classList.toggle('active', tab === 'table');
+    }
+
+    function populateProblemsTable() {
+      const tbody = document.getElementById('problems-table-body');
+      tbody.innerHTML = '';
+
+      questions.forEach((q, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td><strong>#${q.id}</strong></td>
+          <td class="table-question">${q.question}</td>
+          <td><span class="difficulty-badge difficulty-${q.difficulty.toLowerCase()}">${q.difficulty}</span></td>
+          <td><span class="topic-badge">${q.topic}</span></td>
+          <td class="table-actions">
+            <button class="action-btn btn-solve" onclick="solveQuestion(${index})">Solve</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      // Re-render MathJax for table
+      if (window.MathJax && window.MathJax.typesetPromise) {
+        MathJax.typesetPromise([tbody]).catch(console.error);
+      }
+    }
+
+    function solveQuestion(index) {
+      currentQuestionIndex = index;
+      switchTab('quiz');
+      document.querySelector('.tab-btn').classList.remove('active');
+      document.querySelectorAll('.tab-btn')[0].classList.add('active');
+      renderCurrentQuestion();
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (document.getElementById('quiz-tab').classList.contains('active')) {
+        if (e.key === 'ArrowLeft' && currentQuestionIndex > 0) {
+          previousQuestion();
+        } else if (e.key === 'ArrowRight' && currentQuestionIndex < questions.length - 1) {
+          nextQuestion();
+        }
+      }
+    });
+
+    if (!window.MathJax || !window.MathJax.startup) {
+      document.addEventListener('DOMContentLoaded', loadQuestions);
+    }
+  </script>
+</body>
+</html>

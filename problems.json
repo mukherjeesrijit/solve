@@ -1,0 +1,30 @@
+[
+  {
+    "id": 44,
+    "topic": "Probability",
+    "difficulty": "Medium",
+    "questionType": "single",
+    "question": "At a large university, the probability that a student takes Calculus and Statistics in the same semester is $0.0125$. The probability that a student takes Statistics is $0.125$. Find the probability that a student is taking Calculus, given that he or she is taking Statistics.",
+    "options": {
+      "A": "$0.0125$",
+      "B": "$0.0100$",
+      "C": "$0.1000$",
+      "D": "$0.4500$"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 45,
+    "topic": "Probability",
+    "difficulty": "Easy",
+    "questionType": "single",
+    "question": "If $A$ and $B$ are two events, the probability of occurrence of either $A$ or $B$ is given as:",
+    "options": {
+      "A": "$P(A)+P(B)$",
+      "B": "$P(A \\cup B)$",
+      "C": "$P(A \\cap B)$",
+      "D": "$P(A) P(B)$"
+    },
+    "answer": "B"
+  }
+]

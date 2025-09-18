@@ -328,6 +328,16 @@ body {
   background: #f8faff;
 }
 
+.table .clickable-row {
+  transition: all 0.2s ease;
+}
+
+.table .clickable-row:hover {
+  background: #f0f4ff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
+}
+
 .table-question {
   max-width: 400px;
   line-height: 1.5;
@@ -383,7 +393,7 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* Responsive Design */
+/* Mobile Table Styles */
 @media (max-width: 768px) {
   .header {
     padding: 0 1rem;
@@ -408,15 +418,178 @@ body {
   }
 
   .table-container {
-    padding: 1rem;
+    padding: 0.5rem;
+    overflow-x: auto;
+  }
+
+  .problems-table {
+    min-width: 100%;
+    overflow-x: auto;
+    margin: 0;
   }
 
   .table {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
+    table-layout: fixed;
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: separate;
   }
 
   .table th,
   .table td {
-    padding: 0.75rem 0.5rem;
+    padding: 0.4rem 0.15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-right: 1px solid #f3f4f6;
+  }
+
+  .table th:last-child,
+  .table td:last-child {
+    border-right: none;
+  }
+
+  /* Fixed column widths for mobile - now 4 columns */
+  .table th:nth-child(1),
+  .table td:nth-child(1) {
+    width: 20%;
+    min-width: 45px;
+  }
+
+  .table th:nth-child(2),
+  .table td:nth-child(2) {
+    width: 35%;
+    min-width: 80px;
+  }
+
+  .table th:nth-child(3),
+  .table td:nth-child(3) {
+    width: 22.5%;
+    min-width: 55px;
+  }
+
+  .table th:nth-child(4),
+  .table td:nth-child(4) {
+    width: 22.5%;
+    min-width: 55px;
+  }
+
+  .table-question {
+    max-width: none;
+    font-size: 0.7rem;
+  }
+
+  .difficulty-badge,
+  .topic-badge {
+    font-size: 0.65rem;
+    padding: 0.125rem 0.25rem;
+    display: inline-block;
+    min-width: 20px;
+    text-align: center;
+  }
+
+  .action-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.65rem;
+    width: 100%;
+    min-width: 35px;
+  }
+}
+
+/* Extra small screens (iPhone SE and similar) */
+@media (max-width: 480px) {
+  .table-container {
+    padding: 0.25rem;
+  }
+
+  .table {
+    font-size: 0.65rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.3rem 0.1rem;
+  }
+
+  /* Even tighter column widths for very small screens - 4 columns */
+  .table th:nth-child(1),
+  .table td:nth-child(1) {
+    width: 18%;
+    min-width: 40px;
+  }
+
+  .table th:nth-child(2),
+  .table td:nth-child(2) {
+    width: 38%;
+    min-width: 75px;
+  }
+
+  .table th:nth-child(3),
+  .table td:nth-child(3) {
+    width: 22%;
+    min-width: 45px;
+  }
+
+  .table th:nth-child(4),
+  .table td:nth-child(4) {
+    width: 22%;
+    min-width: 45px;
+  }
+
+  .table-question {
+    font-size: 0.6rem;
+  }
+
+  .difficulty-badge,
+  .topic-badge {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.2rem;
+    min-width: 18px;
+  }
+
+  .action-btn {
+    padding: 0.2rem 0.3rem;
+    font-size: 0.6rem;
+    min-width: 30px;
+  }
+}
+
+/* Very small screens (iPhone 5/SE in portrait) */
+@media (max-width: 375px) {
+  .table th,
+  .table td {
+    padding: 0.25rem 0.05rem;
+  }
+
+  .table th:nth-child(1),
+  .table td:nth-child(1) {
+    width: 20%;
+  }
+
+  .table th:nth-child(2),
+  .table td:nth-child(2) {
+    width: 40%;
+  }
+
+  .table th:nth-child(3),
+  .table td:nth-child(3) {
+    width: 20%;
+  }
+
+  .table th:nth-child(4),
+  .table td:nth-child(4) {
+    width: 20%;
+  }
+
+  .difficulty-badge,
+  .topic-badge {
+    font-size: 0.55rem;
+    padding: 0.05rem 0.15rem;
+  }
+
+  .action-btn {
+    font-size: 0.55rem;
+    padding: 0.15rem 0.2rem;
   }
 }

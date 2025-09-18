@@ -26,47 +26,66 @@ window.TableManager = {
   // Create a table row for a question
   createTableRow(question, index) {
     const row = document.createElement('tr');
+    row.style.cursor = 'pointer';
+    row.title = 'Click to solve this problem';
+    
+    // Make entire row clickable
+    row.addEventListener('click', () => {
+      this.solveQuestion(index);
+    });
+    
+    // Add hover effect class
+    row.classList.add('clickable-row');
     
     // ID cell
     const idCell = document.createElement('td');
     idCell.innerHTML = `<strong>#${question.id}</strong>`;
     
-    // Question cell
+    // Question cell - responsive text truncation
     const questionCell = document.createElement('td');
     questionCell.className = 'table-question';
-    questionCell.innerHTML = this.truncateText(question.question, 100);
+    
+    // More responsive text length based on screen size
+    let maxLength;
+    if (window.innerWidth <= 375) {
+      maxLength = 6;  // Very small screens
+    } else if (window.innerWidth <= 480) {
+      maxLength = 8;  // Small mobile
+    } else if (window.innerWidth <= 768) {
+      maxLength = 12; // Regular mobile
+    } else {
+      maxLength = 20; // Desktop
+    }
+    
+    questionCell.innerHTML = this.truncateText(question.question, maxLength);
     
     // Difficulty cell
     const difficultyCell = document.createElement('td');
     const difficultyBadge = document.createElement('span');
     difficultyBadge.className = `difficulty-badge difficulty-${question.difficulty.toLowerCase()}`;
-    difficultyBadge.textContent = question.difficulty;
+    // Abbreviate difficulty for mobile
+    const difficultyText = window.innerWidth <= 768 ? 
+      question.difficulty.charAt(0) : 
+      question.difficulty;
+    difficultyBadge.textContent = difficultyText;
     difficultyCell.appendChild(difficultyBadge);
     
     // Topic cell
     const topicCell = document.createElement('td');
     const topicBadge = document.createElement('span');
     topicBadge.className = 'topic-badge';
-    topicBadge.textContent = question.topic;
+    // Abbreviate topic for mobile
+    const topicText = window.innerWidth <= 768 ? 
+      question.topic.substring(0, 4) : 
+      question.topic;
+    topicBadge.textContent = topicText;
     topicCell.appendChild(topicBadge);
     
-    // Actions cell
-    const actionsCell = document.createElement('td');
-    actionsCell.className = 'table-actions';
-    
-    const solveBtn = document.createElement('button');
-    solveBtn.className = 'action-btn btn-solve';
-    solveBtn.textContent = 'Solve';
-    solveBtn.onclick = () => this.solveQuestion(index);
-    
-    actionsCell.appendChild(solveBtn);
-    
-    // Append all cells to row
+    // Append all cells to row (no actions cell)
     row.appendChild(idCell);
     row.appendChild(questionCell);
     row.appendChild(difficultyCell);
     row.appendChild(topicCell);
-    row.appendChild(actionsCell);
     
     return row;
   },

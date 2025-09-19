@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solve Math for AI/Quant</title>
+  <title>Solve Math for AI & Quant</title>
   
   <!-- MathJax Configuration -->
   <script>
@@ -33,16 +33,24 @@
 </head>
 <body>
   <div class="header">
-    <div class="logo">Solve Math for AI/Quant</div>
+    <div class="logo">
+      <img src="logo.png" alt="Solve Math for AI & Quant" class="logo-image">
+    </div>
     <div class="tab-buttons">
-      <button class="tab-btn active" data-tab="quiz">Quiz</button>
-      <button class="tab-btn" data-tab="table">All Problems</button>
+      <button class="tab-btn active" data-tab="quiz">Solve</button>
+      <button class="tab-btn" data-tab="table">Problems</button>
     </div>
   </div>
 
   <div class="main-container">
     <!-- Quiz Tab -->
     <div id="quiz-tab" class="quiz-container active">
+      <div class="quiz-header">
+        <button id="random-btn" class="random-button">
+          🎲 Random Question
+        </button>
+      </div>
+      
       <div id="quiz-content">
         <div class="loading">
           <div class="spinner"></div>
@@ -67,7 +75,7 @@
     <div id="table-tab" class="table-container">
       <div class="table-header">
         <h1 class="table-title">Problems Overview</h1>
-        <p class="table-subtitle">Browse all available probability problems</p>
+        <p class="table-subtitle">Browse all the available problems.</p>
       </div>
       <div class="problems-table">
         <table class="table">
@@ -85,6 +93,11 @@
       </div>
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Created with <span class="heart">❤️</span> by <a href="https://www.instagram.com/srijit.math/" target="_blank" rel="noopener noreferrer">Srijit Mukherjee</a></p>
+  </footer>
 
   <!-- JavaScript Modules -->
   <script src="js/data.js"></script>

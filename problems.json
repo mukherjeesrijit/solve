@@ -1,6 +1,6 @@
 [
   {
-    "id": 44,
+    "id": 1,
     "topic": "Probability",
     "difficulty": "Medium",
     "questionType": "single",
@@ -14,7 +14,7 @@
     "answer": "C"
   },
   {
-    "id": 45,
+    "id": 2,
     "topic": "Probability",
     "difficulty": "Easy",
     "questionType": "single",
@@ -28,59 +28,479 @@
     "answer": "B"
   },
   {
-    "id": 46,
-    "topic": "Probability",
-    "difficulty": "Hard",
-    "questionType": "single",
-    "question": "A box contains 12 balls: 5 red, 4 blue, and 3 green. If 3 balls are drawn without replacement, what is the probability that all three balls are of different colors?",
-    "options": {
-      "A": "$\\frac{60}{220}$",
-      "B": "$\\frac{1}{11}$",
-      "C": "$\\frac{3}{11}$",
-      "D": "$\\frac{60}{165}$"
-    },
-    "answer": "C"
-  },
-  {
-    "id": 47,
+    "id": 3,
     "topic": "Probability",
     "difficulty": "Medium",
     "questionType": "single",
-    "question": "In a normal distribution with mean $\\mu = 100$ and standard deviation $\\sigma = 15$, what is the probability that a randomly selected value falls between 85 and 115?",
+    "question": "The probability density function of a random variable $x$ is given by:\n$$\nf(x)=\n\\begin{cases}\n \\dfrac{x^2}{81}, & -3 &lt; x &lt; 6 \\\\[6pt]\n 0, & \\text{otherwise}\n\\end{cases}\n$$",
     "options": {
-      "A": "$0.68$",
-      "B": "$0.95$",
-      "C": "$0.99$",
-      "D": "$0.50$"
+      "A": "$1/2$",
+      "B": "$1/3$",
+      "C": "$1/4$",
+      "D": "1"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 4,
+    "topic": "Probability",
+    "difficulty": "Medium",
+    "questionType": "single",
+    "question": "The probability that a student passes a Multivariate test is $2/3$ and the probability that he/she passes both a Multivariate test and Data Mining test is $14/45$. The probability that he/she passes at least one test is $4/5$. Then the probability that he/she passes the Data Mining test is:",
+    "options": {
+      "A": "$4/9$",
+      "B": "$1/9$",
+      "C": "$2/3$",
+      "D": "$5/6$"
     },
     "answer": "A"
   },
   {
-    "id": 48,
-    "topic": "Statistics",
+    "id": 5,
+    "topic": "Probability",
+    "difficulty": "Medium",
+    "questionType": "single",
+    "question": "A fair coin is tossed three times, given that at least one of the first two tosses showed tails, the probability that exactly one head showed up:",
+    "options": {
+      "A": "is $\\frac{1}{2}$",
+      "B": "is $\\frac{1}{4}$",
+      "C": "is $\\frac{1}{8}$",
+      "D": "cannot be determined"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 6,
+    "topic": "Probability",
+    "difficulty": "Hard",
+    "questionType": "single",
+    "question": "To compare the lifetimes of bulbs produced by two companies, A and B, one bulb of each company was selected at random and their lifetimes were observed. Assume that the bulbs have exponentially distributed lifetimes with mean 1000 days and 800 days for company A and company B, respectively. What is the probability that the bulb from company B fails first?",
+    "options": {
+      "A": "$\\frac{4}{9}$",
+      "B": "$\\frac{5}{9}$",
+      "C": "$\\frac{25}{81}$",
+      "D": "$\\frac{25}{41}$"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 7,
+    "topic": "Probability",
+    "difficulty": "Hard",
+    "questionType": "single",
+    "question": "Let $X$ be a random variable with density \n$$\nf(x) = \\tfrac{1}{2} e^{-|x|}, \\quad -\\infty \\lt x \\lt \\infty.\n$$ \nWhat is the expected value of $[X]$, where $[\\,\\cdot\\,]$ denotes the greatest integer function?",
+    "options": {
+      "A": "$\\frac{1}{2}$",
+      "B": "$0$",
+      "C": "$-\\frac{1}{2}$",
+      "D": "$-1$"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 8,
+    "topic": "Random Variables",
     "difficulty": "Easy",
     "questionType": "single",
-    "question": "The mean of the dataset $\\{2, 4, 6, 8, 10\\}$ is:",
+    "question": "If $F(x)$ is the distribution function of the random variable $X$, then $\\lim_{x \\rightarrow \\infty} F(x)$ is:",
     "options": {
-      "A": "$5$",
-      "B": "$6$",
-      "C": "$7$",
-      "D": "$8$"
+      "A": "$-1$",
+      "B": "$0$",
+      "C": "$1$",
+      "D": "$\\infty$"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 9,
+    "topic": "Random Variables",
+    "difficulty": "Medium",
+    "questionType": "single",
+    "question": "The probability mass function of a random variable $X$ is given by $P(X=x)=\\frac{1}{3}\\left(\\frac{2}{3}\\right)^{j-1}$ for $j=1,2, \\ldots$. $P(X=101 \\mid X>100)$ is:",
+    "options": {
+      "A": "$\\frac{1}{3}$",
+      "B": "$\\frac{2}{3}$",
+      "C": "$\\left(\\frac{1}{3}\\right)^{100}$",
+      "D": "$\\left(\\frac{2}{3}\\right)^{100}$"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 10,
+    "topic": "Random Variables",
+    "difficulty": "Easy",
+    "questionType": "single",
+    "question": "An unbiased die is tossed successively till a six occurs. The expected number of tosses required is:",
+    "options": {
+      "A": "$6$",
+      "B": "$7$",
+      "C": "$5$",
+      "D": "$4$"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 11,
+    "topic": "Random Variables",
+    "difficulty": "Medium",
+    "questionType": "single",
+    "question": "If $X$ is a random variable and $f(x)$ is its p.d.f., $E\\left(\\frac{1}{X}\\right)$ is used to find:",
+    "options": {
+      "A": "first central moment",
+      "B": "geometric mean",
+      "C": "arithmetic mean",
+      "D": "harmonic mean"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 12,
+    "topic": "Random Variables",
+    "difficulty": "Hard",
+    "questionType": "single",
+    "question": "The heights of adult ladies in our country are normally distributed with mean $150$ cm and variance $49$ cm$^2$, if $P(0<Z \\leq a)=0.25$ where $Z \\sim N(0,1)$, then half the ladies have heights between:",
+    "options": {
+      "A": "$(150-a)$ cm and $(150+a)$ cm",
+      "B": "$150$ cm and $(150+2a)$ cm",
+      "C": "$(150-7a)$ cm and $(150+7a)$ cm",
+      "D": "$(150-7a)$ cm and $(150+a)$ cm"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 13,
+    "topic": "Random Variables",
+    "difficulty": "Hard",
+    "questionType": "single",
+    "question": "$f_1$ and $f_2$ are pdfs of two random variables $X_1$ and $X_2$ which are defined as $f_1(x)=\\frac{1}{\\sqrt{2 \\pi}} e^{-\\frac{x^2}{2}},-\\infty<x<\\infty$ and $f_2(x)=\\frac{1}{2} e^{-|x|},-\\infty<x<\\infty$, identify the correct statement:",
+    "options": {
+      "A": "$\\operatorname{Pr}\\left(\\left|X_1\\right|>2\\right)<\\operatorname{Pr}\\left(\\left|X_2\\right|>2\\right)$",
+      "B": "$E\\left(X_1^{2 n-1}\\right)=E\\left(X_2^{2 n-1}\\right)=0, \\quad \\forall n=1,2, \\ldots$",
+      "C": "$E\\left(X_1^{2 n}\\right)=E\\left(X_2^{2 n}\\right), \\quad \\forall n=1,2, \\ldots$",
+      "D": "The moment generating functions of $X_1$ and $X_2$ exist and are equal"
     },
     "answer": "B"
   },
   {
-    "id": 49,
-    "topic": "Statistics",
+    "id": 14,
+    "topic": "Random Variables",
     "difficulty": "Hard",
     "questionType": "single",
-    "question": "For a chi-square test with 5 degrees of freedom, what is the critical value at $\\alpha = 0.05$ significance level?",
+    "question": "If $\\rho$ is the correlation coefficient between $X$ and $Y$, then the minimum value of $\\operatorname{Var}(Y-aX)$, over all the values of $a$, is given by:",
     "options": {
-      "A": "$9.236$",
-      "B": "$11.070$",
-      "C": "$12.833$",
-      "D": "$15.086$"
+      "A": "$\\left(1-\\rho^2\\right) \\operatorname{Var}(Y)$",
+      "B": "$\\frac{\\rho^2 \\operatorname{Var}(X)}{\\operatorname{Var}(Y)}$",
+      "C": "$\\frac{\\rho^2 \\operatorname{Var}(Y)}{\\operatorname{Var}(X)}$",
+      "D": "$\\rho^2 \\operatorname{Var}(Y)$"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 15,
+    "topic": "Standard Distributions",
+    "difficulty": "Easy",
+    "questionType": "single",
+    "question": "The area under a normal curve between one standard deviation on either side of the mean is:",
+    "options": {
+      "A": "$95\\%$",
+      "B": "$68\\%$",
+      "C": "$60\\%$",
+      "D": "$99\\%$"
     },
     "answer": "B"
+  },
+  {
+    "id": 16,
+    "topic": "Standard Distributions",
+    "difficulty": "Medium",
+    "questionType": "single",
+    "question": "Shifting of origin does not affect which distribution:",
+    "options": {
+      "A": "Binomial",
+      "B": "Gamma",
+      "C": "Geometric",
+      "D": "Beta"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 17,
+    "topic": "Standard Distributions",
+    "difficulty": "Hard",
+    "questionType": "single",
+    "question": "For a random variable $X, P[X=0]=1-\\frac{1}{k^2}$ and $P[X=+1]=P[X=-1]=\\frac{1}{2 k^2}$ where $k$ is a constant greater than 1 and $\\sigma^2$ is $E\\left(x^2\\right)$. Then which of the following is correct?",
+    "options": {
+      "A": "$P[|X| \\geq k \\sigma]<\\frac{1}{k^2}$",
+      "B": "$P[|X| \\geq k \\sigma]>1+\\frac{1}{k^2}$",
+      "C": "$P[|X| \\geq k \\sigma]=\\frac{1}{k^2}$",
+      "D": "$P[|X-1| \\geq k \\sigma]=\\frac{1}{k^2}$"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 18,
+    "topic": "Standard Distributions",
+    "difficulty": "Hard",
+    "questionType": "single",
+    "question": "Let $X_1$ and $X_2$ be independent random variables with respective moment generating functions as $M_1(t)=\\left(\\frac{3}{4}+\\frac{1}{4} e^t\\right)^3$ and $M_2(t)=e^{2\\left(e^t-1\\right)},-\\infty<t<\\infty$. Then the value of $P\\left(X_1+X_2=0\\right)$ is:",
+    "options": {
+      "A": "$\\frac{27}{64} e^{-2}$",
+      "B": "$\\frac{11}{64} e^{-2}$",
+      "C": "$\\frac{81}{64} e^{-2}$",
+      "D": "$\\frac{19}{64} e^{-2}$"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 19,
+    "topic": "Standard Distributions",
+    "difficulty": "Medium",
+    "questionType": "single",
+    "question": "If $X$ and $Y$ are standard normal variates with correlation coefficient $\\rho$ between them, then what is the correlation coefficient between $X^2$ and $Y^2$?",
+    "options": {
+      "A": "$2 \\rho-1$",
+      "B": "$\\rho^2$",
+      "C": "$\\rho$",
+      "D": "$\\sqrt{\\rho}$"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 20,
+    "topic": "Standard Distributions",
+    "difficulty": "Medium",
+    "questionType": "single",
+    "question": "Suppose $X_1, X_2, \\ldots, X_n$ are iid Bernoulli variables with success probability $p$ and let $Y=\\max \\left\\{X_1, X_2, \\ldots, X_n\\right\\}$. Then:",
+    "options": {
+      "A": "$Y$ is Bernoulli variable with success probability equal to $p$",
+      "B": "$Y$ is Bernoulli variable with success probability equal to $1-(1-p)^n$",
+      "C": "$Y$ is Bernoulli variable with success probability equal to $1-p^n$",
+      "D": "$Y$ is not a Bernoulli variable"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 21,
+    "topic": "Standard Distributions",
+    "difficulty": "Medium",
+    "questionType": "single",
+    "question": "Let $X$ and $Y$ be independently and identically distributed as lognormal with parameters $\\mu$ and $\\sigma^2$. What are the mean and variance of $\\log \\left(\\frac{X}{Y}\\right)$ respectively?",
+    "options": {
+      "A": "$0$ and $\\sigma^2$",
+      "B": "$0$ and $2 \\sigma^2$",
+      "C": "$2 \\mu$ and $\\sigma^2$",
+      "D": "$2 \\mu$ and $2 \\sigma^2$"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 22,
+    "topic": "Joint Distributions",
+    "difficulty": "Medium",
+    "questionType": "single",
+    "question": "Suppose that $p(x, y)$, the joint probability mass function (p.m.f.) of discrete random variables $X$ and $Y$, is given by: $p(0,0)=0.4, p(0,1)=0.2, p(1,0)=0.1, p(1,1)=0.3$. Then the conditional p.m.f. of $X$, given that $Y=1$, is:",
+    "options": {
+      "A": "$p_{X \\mid Y}(0 \\mid 1)=\\frac{3}{5}, p_{X \\mid Y}(1 \\mid 1)=\\frac{2}{5}$",
+      "B": "$p_{X \\mid Y}(0 \\mid 1)=\\frac{2}{5}, p_{X \\mid Y}(1 \\mid 1)=\\frac{3}{5}$",
+      "C": "$p_{X \\mid Y}(0 \\mid 1)=\\frac{4}{5}, p_{X \\mid Y}(1 \\mid 1)=\\frac{3}{5}$",
+      "D": "$p_{X \\mid Y}(0 \\mid 1)=\\frac{1}{5}, p_{X \\mid Y}(1 \\mid 1)=\\frac{2}{5}$"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 23,
+    "topic": "Joint Distributions",
+    "difficulty": "Hard",
+    "questionType": "single",
+    "question": "If the two continuous random variables $X$ and $Y$ have the following joint probability density function $f(x, y)=\\left\\{\\begin{array}{cc}x e^{-x(y+1)} ; & x \\geq 0, y \\geq 0 \\\\ 0 ; & \\text { elsewhere }\\end{array}\\right.$, then the regression curve of $Y$ on $X$ is:",
+    "options": {
+      "A": "$Y=X$",
+      "B": "$Y=X^2$",
+      "C": "$Y=\\frac{1}{X^2}$",
+      "D": "$Y=\\frac{1}{X}$"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 24,
+    "topic": "Joint Distributions",
+    "difficulty": "Hard",
+    "questionType": "single",
+    "question": "If $F$ denotes the cumulative distribution function, which of the following is not always true for all real values of $x$ and $y$?",
+    "options": {
+      "A": "$F_{X, Y}(x, y) \\leq\\left(F_X(x)+F_Y(y)\\right) /2$",
+      "B": "$F_{X, Y}(x, y) \\geq F_X(x)+F_Y(y)-1$",
+      "C": "$F_{X, Y}(x, y) \\leq 1-F_X(x)-F_Y(y)$",
+      "D": "$F_{X, Y}(x, y) \\leq\\left[F_X(x) F_Y(y)\\right]^{1 / 2}$"
+    },
+    "answer": "C"
+  },
+  {
+  "id": 25,
+  "topic": "Joint Distributions",
+  "difficulty": "Medium",
+  "questionType": "single",
+  "question": "The joint probability density of $X$ and $Y$ is given as \n$$\nf(x,y) = \n\\begin{cases}\n  \\dfrac{x+2y}{3}, & 0 \\lt x \\lt 1, \\; 0 \\lt y \\lt 1 \\\\[6pt]\n  0, & \\text{otherwise}\n\\end{cases}\n$$\nWhat is the value of $P\\big(Y \\leq \\tfrac{1}{2} \\mid X=\\tfrac{1}{2}\\big)$?",
+  "options": {
+    "A": "$\\tfrac{1}{6}$",
+    "B": "$\\tfrac{1}{3}$",
+    "C": "$\\tfrac{2}{3}$",
+    "D": "$\\tfrac{5}{6}$"
+  },
+  "answer": "A"
+},
+  {
+    "id": 26,
+    "topic": "Joint Distributions",
+    "difficulty": "Medium",
+    "questionType": "single",
+    "question": "For any independent random variables $X_1$ and $X_2$ whose expected values are zero and variances are 25, identify the incorrect statement:",
+    "options": {
+      "A": "$X_1+X_2$ and $X_1-X_2$ are always independent",
+      "B": "$V\\left(X_1-X_2\\right)=50$",
+      "C": "$V\\left(X_1+X_2\\right)=V\\left(X_1-X_2\\right)$",
+      "D": "$\\operatorname{Cov}\\left(X_1+X_2, X_1-X_2\\right)=0$"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 27,
+    "topic": "Sampling Distributions",
+    "difficulty": "Hard",
+    "questionType": "single",
+    "question": "If $M_x(t)=\\left(\\frac{1+e^t}{2}\\right)^n$ then the $\\operatorname{var}(X)$ will be:",
+    "options": {
+      "A": "$\\frac{n}{2^{n}}$",
+      "B": "$\\frac{n(n-1)}{2^n}$",
+      "C": "$\\frac{(n-1)}{2^n}$",
+      "D": "$\\frac{(n-1)}{2^{n-1}}$"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 28,
+    "topic": "Sampling Distributions",
+    "difficulty": "Easy",
+    "questionType": "single",
+    "question": "The blood pressure (B.P.) of a group of patients was determined. After administering a medicine, the B.P. was measured again. To determine the significance of the medicine, the test to be applied is:",
+    "options": {
+      "A": "Z-test",
+      "B": "Paired t-test",
+      "C": "$\\chi^2$-test",
+      "D": "F-test"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 29,
+    "topic": "Sampling Distributions",
+    "difficulty": "Medium",
+    "questionType": "single",
+    "question": "It has been estimated that about $20\\%$ of people between the ages of 18 and 25 have used Marijuana in the last year. Which of the following is correct about this statement?",
+    "options": {
+      "A": "Five people of this age group were randomly selected. This means that exactly one of them must have used Marijuana in the last year",
+      "B": "A million people from this age group were randomly selected. There must be exactly 200000 of them that have used Marijuana in the last year",
+      "C": "Twenty people were randomly selected from this age group. Eighteen of them used Marijuana in the last year. The next person selected at random will have a lower probability of using Marijuana",
+      "D": "A thousand people from this age group were randomly selected. It is not unusual to find that 217 of them have used Marijuana in the last year"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 30,
+    "topic": "Sampling Distributions",
+    "difficulty": "Medium",
+    "questionType": "single",
+    "question": "If $X_1, X_2, \\ldots, X_n$ is a random sample from a normal population with mean $\\mu$ and variance $\\sigma^2$ (unknown), then the sampling distribution of $\\frac{\\sqrt{n}(\\bar{X}-\\mu)}{S}, S^2=\\frac{1}{n-1} \\sum_{i=1}^n\\left(X_i-\\bar{X}\\right)^2$, is:",
+    "options": {
+      "A": "$N\\left(\\mu, \\frac{\\sigma^2}{n}\\right)$",
+      "B": "$t$ with $n$ degrees of freedom when $n$ is small $(\\leq 30)$",
+      "C": "$t$ with $n-1$ degrees of freedom when $n$ is small $(\\leq 30)$",
+      "D": "$t$ with $n-1$ degrees of freedom for all $n$"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 31,
+    "topic": "Sampling Distributions",
+    "difficulty": "Hard",
+    "questionType": "single",
+    "question": "A simple random sample of size 10 is selected with replacement from a population of size 100. What is the expected number of unique elements in the sample?",
+    "options": {
+      "A": "$100 \\times\\left(\\frac{99}{100}\\right)^{10}$",
+      "B": "$100 \\times\\left[1-\\left(\\frac{99}{100}\\right)^{10}\\right]$",
+      "C": "$100 \\times\\left(\\frac{9}{10}\\right)^{10}$",
+      "D": "$100 \\times\\left(1-\\frac{99}{100}\\right)^{10}$"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 32,
+    "topic": "Sampling Distributions",
+    "difficulty": "Easy",
+    "questionType": "single",
+    "question": "The value of absolute error is:",
+    "options": {
+      "A": "always positive",
+      "B": "always negative",
+      "C": "positive or negative",
+      "D": "zero"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 33,
+    "topic": "Limit Theorem",
+    "difficulty": "Hard",
+    "questionType": "single",
+    "question": "If $X_i$ can have only two values with equal probabilities $i^\\alpha$ and $-i^\\alpha$, then the law of large numbers can be applied to the independent variables $X_1, X_2, \\cdots$ if:",
+    "options": {
+      "A": "$\\alpha=0$",
+      "B": "$\\alpha=\\frac{1}{2}$",
+      "C": "$\\alpha<\\frac{1}{2}$",
+      "D": "$\\alpha>\\frac{1}{2}$"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 34,
+    "topic": "Limit Theorem",
+    "difficulty": "Medium",
+    "questionType": "single",
+    "question": "The Central Limit Theorem is important in Statistics because:",
+    "options": {
+      "A": "For any population, it says the sampling distribution of the sample mean is approximately normal, regardless of the sample size",
+      "B": "For any sized sample, it says the sampling distribution of the sample mean is approximately normal",
+      "C": "For a large $n$, it says the population is approximately normal",
+      "D": "For a large $n$, it says the sampling distribution of the sample mean is approximately normal, regardless of the shape the population"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 35,
+    "topic": "Limit Theorem",
+    "difficulty": "Hard",
+    "questionType": "single",
+    "question": "The value of $\\lim_{n \\rightarrow \\infty}\\left(1-\\frac{1}{\\sqrt{n}}\\right)^n$:",
+    "options": {
+      "A": "is equal to 0",
+      "B": "is equal to $e^{-3/2}$",
+      "C": "is equal to $e^{-1}$",
+      "D": "does not exist"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 36,
+    "topic": "Limit Theorem",
+    "difficulty": "Hard",
+    "questionType": "single",
+    "question": "Suppose $x_1, x_2, x_3, \\ldots, x_n$ are independent standard normal random variables and $T_n=\\sum_{i=1}^n X_i^2$. Consider the following: 1. The distribution of $T_n$ is $\\chi_n^2$. 2. The asymptotic distribution of $\\sqrt{n}\\left(\\frac{T_n}{n}-1\\right)$ is $N\\left(0, \\sigma^2\\right)$ for some $\\sigma^2>0$. Which of the above is/are correct?",
+    "options": {
+      "A": "1 only",
+      "B": "2 only",
+      "C": "Both 1 and 2",
+      "D": "Neither 1 nor 2"
+    },
+    "answer": "C"
   }
 ]

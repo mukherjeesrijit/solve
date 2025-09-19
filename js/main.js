@@ -58,6 +58,38 @@ window.App = {
         }
       });
     });
+
+    // Setup random button
+    const randomBtn = document.getElementById('random-btn');
+    if (randomBtn) {
+      randomBtn.addEventListener('click', () => this.showRandomQuestion());
+    }
+  },
+
+  // Show random question
+  showRandomQuestion() {
+    const questions = window.DataManager.getAllQuestions();
+    if (questions.length === 0) {
+      this.showError('No questions available for random selection.');
+      return;
+    }
+
+    // Generate random index
+    const randomIndex = Math.floor(Math.random() * questions.length);
+    
+    // Switch to quiz tab and show random question
+    this.switchTab('quiz');
+    
+    // Update active tab button (remove active from all, don't add to random)
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector('.tab-btn[data-tab="quiz"]').classList.add('active');
+    
+    // Navigate to random question
+    if (window.QuizManager) {
+      window.QuizManager.goToQuestion(randomIndex);
+    }
+
+    console.log(`Showing random question: ${randomIndex + 1} of ${questions.length}`);
   },
 
   // Switch between tabs

@@ -110,7 +110,7 @@ window.QuizManager = {
     
     const questionNumber = document.createElement("div");
     questionNumber.className = "question-number";
-    questionNumber.textContent = this.currentQuestionIndex + 1;
+    questionNumber.textContent = question.id; // Show actual question ID instead of index
     
     const meta = document.createElement("div");
     meta.className = "question-meta";
